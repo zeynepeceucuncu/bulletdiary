@@ -1,0 +1,10 @@
+.env
+node_modules/
+dist/
+target/
+.DS_Store
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.p12
+*.mobileprovision

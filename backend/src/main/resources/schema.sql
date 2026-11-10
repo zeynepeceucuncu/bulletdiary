@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS journal_backups (
+    id BIGSERIAL PRIMARY KEY,
+    saved_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    content BYTEA NOT NULL
+);

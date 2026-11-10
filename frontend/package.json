@@ -1,0 +1,25 @@
+{
+  "name": "yaprak-journal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "ios:prepare": "npm run build && node scripts/prepare-ios.mjs",
+    "ios:open": "npm run ios:prepare && cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/core": "7.4.3",
+    "@capacitor/ios": "7.4.3",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "7.4.3",
+    "@types/react": "19.1.10",
+    "@types/react-dom": "19.1.7",
+    "typescript": "5.8.3",
+    "vite": "6.4.1"
+  }
+}

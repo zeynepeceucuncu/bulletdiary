@@ -1,0 +1,37 @@
+name: Yaprak checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  ios:
+    runs-on: macos-15
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run ios:prepare
+      - run: xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Debug -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build
+  api:
+    runs-on: ubuntu-latest
+    env:
+      POSTGRES_PASSWORD: ci-only-password
+      YAPRAK_TOKEN: ci-only-token-used-on-an-isolated-runner
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose up -d --build
+      - name: Check authentication and database round trip
+        shell: bash
+        run: |
+          set -eu
+          url=http://localhost:8080/api/backups
+          auth="Authorization: Bearer $YAPRAK_TOKEN"
+          curl -fsS --retry-all-errors --retry 12 --retry-delay 3 -H "$auth" "$url"
+          test "$(curl -s -o /dev/null -w '%{http_code}' "$url")" = 401
+          echo '{"format":"yaprak-1","pages":[]}' > /tmp/backup.json
+          id=$(curl -fsS -H "$auth" -F file=@/tmp/backup.json "$url" | jq -er .id)
+          curl -fsS -H "$auth" "$url/$id" | cmp /tmp/backup.json -
