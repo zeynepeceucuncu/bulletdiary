@@ -48,3 +48,11 @@ Dosyayı AirDrop veya Dosyalar ile iPhone’a aktar ve Yaprak içinden **Defter 
 - `frontend/` mevcut günlük editörünü, React/TypeScript yedekleme ekranını, Vite ayarlarını ve iOS proje hazırlama komutunu içerir.
 - `backend/` Java 21, Spring Boot ve PostgreSQL ile çalışan API’yi içerir.
 - `.github/workflows/check.yml` GitHub Actions etkinse yüklemeden sonra imzasız simülatör derlemesini, yetkisiz istek reddini ve PostgreSQL yedekleme/okuma akışını sınar.
+
+## El yazısı
+
+Günlük ve her iki ajanda şablonunda **El yazısı ekle** düğmesi bulunur. Her sayfaya birden fazla alan ekleyebilirsin. Kalem, renk, üç kalınlık, silgi, geri alma ve yineleme araçları alanın üstündedir. Silgi geçtiği bölgedeki mürekkebi kaldırır. Silme de geri alınabilir.
+
+Varsayılan olarak kalem ve fare girişleri kabul edilir. Parmak ve avuç temasının çizgi üretmemesi için **Parmakla çiz** kapalı başlar. Sayfayı kaydırmak için çizim alanının dışını kullan. Yazı karaktere dönüştürülmeden çizgiler halinde tutulur. Alan yeniden boyutlandığında veya tablet çevrildiğinde aynı koordinatlar kullanılır. Tamamlanan çizgiler cihazdaki deftere kaydedilir ve yedeklere dahil edilir. Geri alma geçmişi o alan açıkken kullanılabilir; kayıtlı son çizgiler yeniden açıldıktan sonra da geri alınabilir.
+
+Hedef cihaz iPad 6. nesil, iPadOS 17.7.11 ve Apple Pencil 1. nesildir. Bu donanımda çizim gecikmesi, avuç teması ve uygulama yaşam döngüsü gerçek cihaz testi gerektirir. Cihazda test yapılmadı.
