@@ -1,0 +1,19 @@
+{
+  "name": "Yaprak · Günlük ve Ajanda",
+  "short_name": "Yaprak",
+  "description": "Çevrimdışı çalışabilen kişisel günlük ve ajanda.",
+  "lang": "tr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf8f1",
+  "theme_color": "#304d40",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
