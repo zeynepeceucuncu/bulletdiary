@@ -1,5 +1,27 @@
 # Yaprak
 
+## iPad için PWA (Xcode gerektirmez)
+
+Web sürümü React/Vite üstünde çalışır ve `frontend/public/manifest.webmanifest` ile ana ekrana eklenebilir.
+`npm run build:pwa` statik dosyaları `dist/` altına derler ve sürümlü service worker üretir.
+HTTPS altında Safari > Paylaş > Ana Ekrana Ekle ile yükleyebilirsin. Ücretsiz Apple geliştirici sertifikasının yedi günlük imza süresi web sürümüne uygulanmaz.
+
+GitHub Pages yayınlaması için GitHub deposunda **Settings > Pages > Build and deployment > Source: GitHub Actions** seç.
+`main` dalındaki `Publish Yaprak web app` workflow'u statik uygulamayı yayımlar.
+Web uygulamasını internete çıkarmak **verileri internete yüklemek değildir**: Günlük ve çizimler cihazın IndexedDB veritabanında kalır.
+Farklı uygulama yüklemeleri / tarayıcı profilleri veri paylaşmaz. Bu kayıtlar site verileri silindiğinde veya tarayıcı tarafından temizlendiğinde kaybolabilir.
+Site adresi değiştirilirse eski IndexedDB içeriği yeni adrese taşınmaz.
+
+**Yeni sürüme geçmeden önce** mevcut iPad uygulamasında **Defter yedeği > Dosyaya aktar** ile
+`yaprak-defter.json` dosyasını iCloud Drive'a kaydet; yeni web uygulamasında
+**Defter yedeği > Dosyadan içe aktar** ile geri yükle.
+Fotoğraf, ses ve el yazısı da yedek dosyasına dahildir. Dosya şifrelenmemiştir;
+özel içerikler için yedek dosyasını ve iCloud hesabını koru.
+
+Tarayıcıdaki kayıtlar otomatik bulut senkronizasyonu **değildir**. Sürekli yedekleme için ayrıca güvenli
+bir servis kurulması gerekir. Mevcut backend otomatik senkronizasyon değil, elle alınan sürümlü yedekler sağlar.
+Üretim ortamında HTTPS, kimlik doğrulama, gizlilik ve yedek geri yükleme ayrıca doğrulanmalıdır.
+
 Türkçe dijital ajanda ve günlük. Bir tarihe birden fazla günlük, yapılacaklar listesi veya hatırlatma sayfası eklenebilir. Metin, fotoğraf, ses kaydı, müzik dosyası, şarkı bağlantısı, sticker ve alıntılar desteklenir.
 
 ## Mac üzerinde iPhone sürümünü aç
