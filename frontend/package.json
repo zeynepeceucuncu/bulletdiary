@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "ios:prepare": "npm run build && node scripts/prepare-ios.mjs",
-    "ios:open": "npm run ios:prepare && cap open ios"
+    "ios:open": "npm run ios:prepare && cap open ios",
+    "build:pwa": "tsc --noEmit && vite build --base=./ && node scripts/build-pwa.mjs"
   },
   "dependencies": {
     "@capacitor/core": "7.4.3",
